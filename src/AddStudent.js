@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 class AddStudent extends Component {
    constructor (props) {
@@ -153,10 +153,6 @@ class AddStudent extends Component {
             {
                 "name": "_year",
                 "type": "uint256"
-            },
-            {
-                "name": "_school",
-                "type": "string"
             }
         ],
         "name": "updateStudent",
@@ -179,9 +175,8 @@ class AddStudent extends Component {
 ]);
 
     this.state = {
-      ContractInstance: SchoolContract.at ('0x2dbbe3c16b088e332cdbe5cc9a2f88503bcff582'),
-      school_name: '',
-      school_add: ''
+      // ContractInstance: SchoolContract.at ('0x2dbbe3c16b088e332cdbe5cc9a2f88503bcff582')
+           ContractInstance: SchoolContract.at ('0x8b3c3586e0f2f39d0197ec068c019704d1f3cdf8')
     }
   }
 
@@ -201,11 +196,9 @@ class AddStudent extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Qualification Ledger</h1>
         </header>
+        <Nav />
         <p className="App-intro">
           Add New Student<br />
-          <Link to='/' >Home</Link> | 
-          <Link to='/add_school' > Add School</Link> | 
-          <Link to='/add_student' > Add Student</Link>
         </p>
         <input type="text" ref="idnum" placeholder="ID Number"/>
         <input type="text" ref="fname" placeholder="First Name"/>

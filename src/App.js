@@ -5,6 +5,8 @@ import './App.css';
 import AddSchool from './AddSchool';
 import SearchSchool from './SearchSchool';
 import AddStudent from './AddStudent';
+import UpdateStudent from './UpdateStudent';
+import SearchStudent from './SearchStudent';
 
 class App extends Component {
  // updateSchool(address){
@@ -24,6 +26,8 @@ class App extends Component {
           <Route exact path='/' component={SearchSchool}/>
           <Route path='/add_school' component={AddSchool}/>
           <Route path='/add_student' component={AddStudent}/>
+          <Route path='/update_student' component={UpdateStudent}/>
+          <Route path='/search_student' component={SearchStudent}/>
         </Switch>
 
     );

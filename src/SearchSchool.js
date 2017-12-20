@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 
 class SearchSchool extends Component {
@@ -154,10 +154,6 @@ class SearchSchool extends Component {
             {
                 "name": "_year",
                 "type": "uint256"
-            },
-            {
-                "name": "_school",
-                "type": "string"
             }
         ],
         "name": "updateStudent",
@@ -180,7 +176,8 @@ class SearchSchool extends Component {
 ]);
 
     this.state = {
-      ContractInstance: SchoolContract.at ('0x2dbbe3c16b088e332cdbe5cc9a2f88503bcff582'),
+      // ContractInstance: SchoolContract.at ('0x2dbbe3c16b088e332cdbe5cc9a2f88503bcff582'),
+           ContractInstance: SchoolContract.at ('0x8b3c3586e0f2f39d0197ec068c019704d1f3cdf8'),
       school_name: '',
       school_add: ''
     }
@@ -204,11 +201,9 @@ class SearchSchool extends Component {
           <h1 className="App-title">Qualification Ledger</h1>
 
         </header>
+        <Nav />
         <p className="App-intro">
           Verify Your Applicant's School<br />
-          <Link to='/' >Home</Link> | 
-          <Link to='/add_school' > Add School</Link> | 
-          <Link to='/add_student' > Add Student</Link>
         </p>
         <input type="text" ref="address" placeholder="Enter address"/>
         <button onClick = {() => this.viewSchool(this.refs.address.value)}> view School </button>
