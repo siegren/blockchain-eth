@@ -185,7 +185,7 @@ class AddStudent extends Component {
 
     setStudent(idnum, fname, lname, qual, year, (err, result) => {
       if(err) console.error('Error', err);
-      console.log(result);
+      console.log(result.toString());
     })
 
   }

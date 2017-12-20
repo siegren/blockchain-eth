@@ -385,8 +385,8 @@ class AddSchool extends Component {
   //     $("#loading").hide();
   // }
   render() {
-    //     const { savedSchool } = this.state.ContractInstance;
-    // savedSchool().watch((err, result) => {
+    //     var savedSchoolEvent = this.state.ContractInstance.savedSchool({}, {fromBlock: startBlockNo, toBlock: 'latest'});
+    // savedSchoolEvent.watch(function(err, result){
     //     if (!err){
     //         $("#loading").hide();
     //         console.log(result);
@@ -407,12 +407,12 @@ class AddSchool extends Component {
         <p className="App-intro">
           Add New School<br />
         </p>
-        <p id="loading">Loading</p>
+       
         <input type="text" ref="address" placeholder="Enter address"/>
         <input type="text" ref="name" placeholder="Enter Name" />
         <input type="text" ref="loc" placeholder="Enter location" />
         <button onClick = {() => this.addSchool(this.refs.address.value, this.refs.name.value, this.refs.loc.value)}>Add School</button>
-        <button onClick = {() => this.hideB()}>Hide</button>
+        
       </div>
     );
   }

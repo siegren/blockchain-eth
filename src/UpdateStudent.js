@@ -217,7 +217,7 @@ class UpdateStudent extends Component {
           Add New Student<br />
         </p>
         <input type="text" ref="idnum" placeholder="ID Number"/>
-        <button onClick = {() => this.searchStudent(this.refs.idnum.value)}>Update Student</button>
+        <button onClick = {() => this.searchStudent(this.refs.idnum.value)}>Search Student</button>
         <input type="text" ref={(input) => { this.txtFname = input; }} placeholder="First Name"/>
         <input type="text" ref={(input) => { this.txtLname = input; }} placeholder="Last Name"/>
         <input type="text" ref={(input) => { this.txtQual = input; }} placeholder="Qualification"/>

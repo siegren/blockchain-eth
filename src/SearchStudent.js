@@ -211,7 +211,7 @@ class SearchStudent extends Component {
         <p>Last Name: {this.state.lname}</p>
         <p>Qualification: {this.state.qual}</p>
         <p>Year Graduated: {this.state.year}</p>
-        <p>Year Graduated: {this.state.school}</p>
+        <p>School: {this.state.school}</p>
 
 
 
