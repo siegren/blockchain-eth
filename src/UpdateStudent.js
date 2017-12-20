@@ -190,6 +190,21 @@ class UpdateStudent extends Component {
     })
 
   }
+
+  searchStudent(idnum){
+    const{ viewStudent } = this.state.ContractInstance;
+
+    viewStudent(idnum, (err, result) => {
+      if(err) console.error('Error', err);
+      console.log(result);
+      this.txtFname.value = result[1];
+      this.txtLname.value = result[2];
+      this.txtQual.value = result[3];
+      this.txtYear.value = result[4].toString();
+      
+    })
+
+  }
   render() {
     return (
       <div className="App">
@@ -202,11 +217,12 @@ class UpdateStudent extends Component {
           Add New Student<br />
         </p>
         <input type="text" ref="idnum" placeholder="ID Number"/>
-        <input type="text" ref="fname" placeholder="First Name"/>
-        <input type="text" ref="lname" placeholder="Last Name"/>
-        <input type="text" ref="qual" placeholder="Qualification"/>
-        <input type="text" ref="year" placeholder="Year Graduated"/>
-        <button onClick = {() => this.editStudent(this.refs.idnum.value, this.refs.fname.value, this.refs.lname.value, this.refs.qual.value, this.refs.year.value)}>Update Student</button>
+        <button onClick = {() => this.searchStudent(this.refs.idnum.value)}>Update Student</button>
+        <input type="text" ref={(input) => { this.txtFname = input; }} placeholder="First Name"/>
+        <input type="text" ref={(input) => { this.txtLname = input; }} placeholder="Last Name"/>
+        <input type="text" ref={(input) => { this.txtQual = input; }} placeholder="Qualification"/>
+        <input type="text" ref={(input) => { this.txtYear = input; }} placeholder="Year Graduated"/>
+        <button onClick = {() => this.editStudent(this.refs.idnum.value, this.txtFname.value, this.txtLname.value, this.txtQual.value, this.txtYear.value)}>Update Student</button>
       </div>
     );
   }
