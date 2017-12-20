@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Nav from './Nav';
 
-class AddSchool extends Component {
+class UpdateStudent extends Component {
    constructor (props) {
     super (props);
 
@@ -173,26 +173,18 @@ class AddSchool extends Component {
         "type": "constructor"
     }
 ]);
+// 0x8b3c3586e0f2f39d0197ec068c019704d1f3cdf8
 
     this.state = {
       // ContractInstance: SchoolContract.at ('0x2dbbe3c16b088e332cdbe5cc9a2f88503bcff582')
-           ContractInstance: SchoolContract.at ('0x8b3c3586e0f2f39d0197ec068c019704d1f3cdf8')
+       ContractInstance: SchoolContract.at ('0x8b3c3586e0f2f39d0197ec068c019704d1f3cdf8')
     }
   }
 
-  addSchool(address, name, loc){
-    const{ setSchool } = this.state.ContractInstance;
+  editStudent(idnum, fname, lname, qual, year){
+    const{ updateStudent } = this.state.ContractInstance;
 
-    setSchool(address, name, loc, (err, result) => {
-      if(err) console.error('Error', err);
-      console.log(String(result));
-    })
-  }
-
-  viewSchool(address){
-    const{ getSchool } = this.state.ContractInstance;
-
-    getSchool(address, (err, result) => {
+    updateStudent(idnum, fname, lname, qual, year, (err, result) => {
       if(err) console.error('Error', err);
       console.log(result);
     })
@@ -203,19 +195,21 @@ class AddSchool extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Verify Your Student</h1>
+          <h1 className="App-title">Qualification Ledger</h1>
         </header>
         <Nav />
         <p className="App-intro">
-          Add New School<br />
+          Add New Student<br />
         </p>
-        <input type="text" ref="address" placeholder="Enter address"/>
-        <input type="text" ref="name" placeholder="Enter Name" />
-        <input type="text" ref="loc" placeholder="Enter location" />
-        <button onClick = {() => this.addSchool(this.refs.address.value, this.refs.name.value, this.refs.loc.value)}>Add School</button>
+        <input type="text" ref="idnum" placeholder="ID Number"/>
+        <input type="text" ref="fname" placeholder="First Name"/>
+        <input type="text" ref="lname" placeholder="Last Name"/>
+        <input type="text" ref="qual" placeholder="Qualification"/>
+        <input type="text" ref="year" placeholder="Year Graduated"/>
+        <button onClick = {() => this.editStudent(this.refs.idnum.value, this.refs.fname.value, this.refs.lname.value, this.refs.qual.value, this.refs.year.value)}>Update Student</button>
       </div>
     );
   }
 }
 
-export default AddSchool;
+export default UpdateStudent;

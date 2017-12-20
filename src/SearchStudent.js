@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Nav from './Nav';
 
-class AddSchool extends Component {
+class SearchStudent extends Component {
    constructor (props) {
     super (props);
 
@@ -175,26 +175,22 @@ class AddSchool extends Component {
 ]);
 
     this.state = {
-      // ContractInstance: SchoolContract.at ('0x2dbbe3c16b088e332cdbe5cc9a2f88503bcff582')
-           ContractInstance: SchoolContract.at ('0x8b3c3586e0f2f39d0197ec068c019704d1f3cdf8')
+    ContractInstance: SchoolContract.at ('0x8b3c3586e0f2f39d0197ec068c019704d1f3cdf8'),
+      fname: '',
+      lname: '',
+      qual: '',
+      year: '',
+      school: ''
     }
   }
 
-  addSchool(address, name, loc){
-    const{ setSchool } = this.state.ContractInstance;
+  searchStudent(idnum){
+    const{ viewStudent } = this.state.ContractInstance;
 
-    setSchool(address, name, loc, (err, result) => {
-      if(err) console.error('Error', err);
-      console.log(String(result));
-    })
-  }
-
-  viewSchool(address){
-    const{ getSchool } = this.state.ContractInstance;
-
-    getSchool(address, (err, result) => {
+    viewStudent(idnum, (err, result) => {
       if(err) console.error('Error', err);
       console.log(result);
+      this.setState({fname: result[1], lname: result[2], qual: result[3], year: result[4].toString(), school: result[5]});
     })
 
   }
@@ -203,19 +199,25 @@ class AddSchool extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Verify Your Student</h1>
+          <h1 className="App-title">Qualification Ledger</h1>
         </header>
         <Nav />
         <p className="App-intro">
-          Add New School<br />
+          Add New Student<br />
         </p>
-        <input type="text" ref="address" placeholder="Enter address"/>
-        <input type="text" ref="name" placeholder="Enter Name" />
-        <input type="text" ref="loc" placeholder="Enter location" />
-        <button onClick = {() => this.addSchool(this.refs.address.value, this.refs.name.value, this.refs.loc.value)}>Add School</button>
+        <input type="text" ref="idnum" placeholder="ID Number"/>
+        <button onClick = {() => this.searchStudent(this.refs.idnum.value)}>Search Student</button>
+        <p>First Name: {this.state.fname}</p>
+        <p>Last Name: {this.state.lname}</p>
+        <p>Qualification: {this.state.qual}</p>
+        <p>Year Graduated: {this.state.year}</p>
+        <p>Year Graduated: {this.state.school}</p>
+
+
+
       </div>
     );
   }
 }
 
-export default AddSchool;
+export default SearchStudent;
